@@ -8,3 +8,6 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
+it("asserts true", () => {
+  expect(true).toEqual(true);
+});
