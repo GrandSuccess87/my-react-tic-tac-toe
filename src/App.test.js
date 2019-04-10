@@ -19,6 +19,10 @@ it('asserts true', () => {
   expect(true).toEqual(true);
 });
 
+it('asserts false', () => {
+  expect(false).toEqual(false);
+});
+
 it('returns correct integer', () => {
   expect(7).toEqual(7);
 });
