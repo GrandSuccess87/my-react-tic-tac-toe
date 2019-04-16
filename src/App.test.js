@@ -15,12 +15,12 @@ it('renders header without crashing', () => {
   ReactDOM.unmountComponentAtNode(header);
 });
 
-it('asserts true', () => {
-  expect(true).toEqual(true);
-});
-
 it('asserts false', () => {
   expect(false).toEqual(false);
+});
+
+it('asserts true', () => {
+  expect(true).toEqual(true);
 });
 
 it('returns correct integer', () => {
