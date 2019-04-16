@@ -23,6 +23,10 @@ it('asserts true', () => {
   expect(true).toEqual(true);
 });
 
-it('returns correct integer', () => {
+it('returns correct integer',() => {
   expect(7).toEqual(7);
+});
+
+it('returns correct integer', () => {
+  expect(3).toEqual(3);
 });
