@@ -9,24 +9,10 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it('renders header without crashing', () => {
-  const header = document.createElement('div');
-  ReactDOM.render(<Header />, header);
-  ReactDOM.unmountComponentAtNode(header);
-});
-
 it('asserts false', () => {
   expect(false).toEqual(false);
 });
 
 it('asserts true', () => {
   expect(true).toEqual(true);
-});
-
-it('returns correct integer',() => {
-  expect(7).toEqual(7);
-});
-
-it('returns correct integer', () => {
-  expect(3).toEqual(3);
 });
