@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from "./components/headerComponent/headerComponent";
-import Game from "./components/gameComponent/gameComponent";
+import Main from "./components/mainComponent/mainComponent";
+import GameHeader from "./components/gameHeaderComponent/gameHeaderComponent";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-          <Header />
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12">
-            <Game />
-          </div>
-        </div>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Main}></Route>
+          <Route exact path="/game" component={GameHeader}></Route>
+        </Switch>
+      </Router>
     );
   }
 }

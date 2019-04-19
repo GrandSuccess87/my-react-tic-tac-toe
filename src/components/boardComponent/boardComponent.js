@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
-import Square from '../squareComponent';
+import Square from '../squareComponent/squareComponent';
+import './board.css'
 
 class Board extends Component {
 
     render() {
         return (
-            <div className="Board Board_Square">
+            <div className="Board Board_Row">
                 <div className="text instructions-text">
                     <div className="row">
-                        <div className="board-grid col-lg-12 col-md-12 col-sm-12">
+                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <Square />
+                            <Square />
+                            <Square />
+                        </div>
+                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <Square />
+                            <Square />
+                            <Square />
+                        </div>
+                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <Square />
                             <Square />
                             <Square />
@@ -16,10 +27,8 @@ class Board extends Component {
                     </div>
                 </div>
             </div>
-
         );
     }
-
 }
 
 

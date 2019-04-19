@@ -1,1 +1,1 @@
-export { default } from "./squareComponent";
+export { default } from "./rowComponent";
