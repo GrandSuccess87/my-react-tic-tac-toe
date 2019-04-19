@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from "./components/headerComponent/headerComponent";
-import Game from "./components/gameComponent/gameComponent";
+import Main from "./components/mainComponent/mainComponent";
+// import Game from "./components/gameComponent/gameComponent";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-          <Header />
+          <Main />
         <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12">
+          {/* <div className="col-lg-12 col-md-12 col-sm-12">
             <Game />
-          </div>
+          </div> */}
         </div>
       </div>
     );
