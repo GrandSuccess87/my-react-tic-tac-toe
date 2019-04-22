@@ -18,8 +18,7 @@ class Main extends Component {
         console.log("Start Button Clicked!");
         const { show } = this.state;
         this.setState({show: !show}) 
-        // this.setState = { show: !show} // change values in state attribute
-        console.log(this.state);
+
     }
 
     render() {

@@ -15,6 +15,7 @@ class Square extends Component {
     }
 
     render() {
+        // console.log(this.state.value);
         return (
             <div className="Square">
 
