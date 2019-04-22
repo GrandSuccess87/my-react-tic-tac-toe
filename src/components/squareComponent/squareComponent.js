@@ -5,7 +5,8 @@ class Square extends Component {
     constructor(props) {
         super(props) // call super parent class constructor props
         this.state = {
-            showMarker: true, // if true then marker will be shown    
+            showMarker: true, // if true then marker will be shown  
+            xValue: null  
         } 
     }
 
@@ -14,6 +15,7 @@ class Square extends Component {
         const { showMarker } = this.state;
         this.setState({showMarker});
         console.log("Square Button Clicked!"); 
+        this.setState({xValue: 'X'})
         console.log(this.state);
     }
 
@@ -22,8 +24,7 @@ class Square extends Component {
             <div className="Square">
 
                 <div>
-                    {/*Passing prop to child component */}
-                    <button type="button" onClick={this.toggleSquare} className="btn btn-outline-primary board-Square">{this.props.value}</button> 
+                    <button type="button" onClick={this.toggleSquare} className="btn btn-outline-primary board-Square">{this.state.xValue}</button> 
 
                 </div>
 
