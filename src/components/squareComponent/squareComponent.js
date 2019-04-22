@@ -5,27 +5,25 @@ class Square extends Component {
     constructor(props) {
         super(props) // call super parent class constructor props
         this.state = {
-            showMarker: true, // if true then marker will be shown  
-            xValue: null  
+            value: null
         } 
     }
 
     toggleSquare = (e) => {
-        e.preventDefault();
-        const { showMarker } = this.state;
-        this.setState({showMarker});
+        // e.preventDefault();
+        this.setState({value: "X"}, () => console.log(this.state.value));
         console.log("Square Button Clicked!"); 
-        this.setState({xValue: 'X'})
-        console.log(this.state);
+        // console.log(this.state.value);
     }
 
     render() {
+        // console.log(this.state.value);
+
         return (
             <div className="Square">
 
                 <div>
-                    <button type="button" onClick={this.toggleSquare} className="btn btn-outline-primary board-Square">{this.state.xValue}</button> 
-
+                    <button type="button" onClick={this.toggleSquare} className="btn btn-outline-primary board-Square">{this.state.value}</button> 
                 </div>
 
             </div>
