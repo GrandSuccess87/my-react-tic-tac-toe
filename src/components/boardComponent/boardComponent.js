@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Row from '../rowComponent/rowComponent';
+import Square from '../squareComponent/squareComponent';
 
 class Board extends Component {
 
     renderSquare(i) {
         /* Passing prop from this parent to child component */
-        return <Row value={i} /> 
+        return <Square value={i} /> 
     }
 
     render() {

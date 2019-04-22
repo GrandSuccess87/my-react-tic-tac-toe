@@ -8,8 +8,7 @@ class Main extends Component {
         constructor(props) {
         super(props) // call super parent class constructor props
         this.state = {
-            show: false, // if true the data will be shown
-            showStartButton: true
+            show: false // if true the data will be shown
         
         } 
     }
@@ -21,14 +20,6 @@ class Main extends Component {
         this.setState({show: !show}) 
         // this.setState = { show: !show} // change values in state attribute
         console.log(this.state);
-    }
-
-    hideStartButton = (e) => {
-        e.preventDefault();
-        console.log("Start Button Hidden!");
-        const { hide } = this.state;
-        console.log(this.state);
-        this.setState({hide: !hide})
     }
 
     render() {
