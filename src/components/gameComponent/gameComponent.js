@@ -1,37 +1,51 @@
-// import React, { Component } from 'react';
-// import Board from '../boardComponent';
-
-// class Game extends Component {
-
-    // constructor(props) {
-    //     super(props) // call super parent class constructor props
-    //     this.state = {show: false} // if true the data will be shown
-    //     // this.toggleDiv = this.toggleDiv.bind(this); // bind this to the toggle div
-    // }
-
-    // toggleDiv = (e) => {
-    //     e.preventDefault();
-    //     console.log("Start Button Clicked");
-    //     const { show } = this.state;
-    //     this.setState({show: !show}) 
-    //     // this.setState = { show: !show} // change values in state attribute
-    //     console.log(this.state);
-    // }
-//     render() {
-//         return (
-//             <div className="Game">
-//                 {/* <div className="start_game">
-//                     <button onClick={this.toggleDiv} type="button" className="btn btn-outline-primary">Start Game</button> 
-//                 </div> */}
-//                 <div className="Game_Board">
-//                 {/* //based on state variable the board will show */}
-//                     {this.state.show && <Board /> } 
-//                 </div>
-//             </div>
-//         );
-//     }
-
-// }
+import React, { Component } from 'react';
+import Board from "../boardComponent/boardComponent";
+import logo from '../../images/game-logo3.png';
 
 
-// export default Game;
+class Main extends Component {
+
+        constructor(props) {
+        super(props) // call super parent class constructor props
+        this.state = {
+            show: false, // if true the data will be shown
+            showStartButton: true
+        
+        } 
+    }
+
+    toggleDiv = (e) => {
+        e.preventDefault();
+        console.log("Start Button Clicked!");
+        const { show } = this.state;
+        this.setState({show: !show}) 
+        // this.setState = { show: !show} // change values in state attribute
+        console.log(this.state);
+    }
+
+    hideStartButton = (e) => {
+        e.preventDefault();
+        console.log("Start Button Hidden!");
+        const { hide } = this.state;
+        console.log(this.state);
+        this.setState({hide: !hide})
+    }
+
+    render() {
+        return (
+            <div>
+            <div className="App-header">
+                <h2>Welcome to React Tic Tac Toe</h2>
+                <img src={logo} className="App-logo" alt="logo" /> <br />
+                <div className="start_game">
+                    <button type="button" onClick={this.toggleDiv} className="btn btn-outline-primary">Start Game</button>
+                    {this.state.show && <Board /> } 
+
+                </div>
+                </div>
+          </div>
+        );
+    }
+}
+
+export default Main;
