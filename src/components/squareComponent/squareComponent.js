@@ -10,15 +10,12 @@ class Square extends Component {
     }
 
     toggleSquare = (e) => {
-        // e.preventDefault();
         this.setState({value: "X"}, () => console.log(this.state.value));
         console.log("Square Button Clicked!"); 
-        // console.log(this.state.value);
     }
 
     render() {
         // console.log(this.state.value);
-
         return (
             <div className="Square">
 
