@@ -6,19 +6,17 @@ import logo from '../../images/game-logo3.png';
 class Main extends Component {
 
         constructor(props) {
-        super(props) // call super parent class constructor props
+        super(props) 
         this.state = {
-            show: false // if true the data will be shown
+            show: false 
         
         } 
     }
 
     toggleDiv = (e) => {
         e.preventDefault();
-        console.log("Start Button Clicked!");
         const { show } = this.state;
         this.setState({show: !show}) 
-
     }
 
     render() {
