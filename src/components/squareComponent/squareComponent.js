@@ -3,19 +3,17 @@ import React, { Component } from 'react';
 class Square extends Component {
 
     constructor(props) {
-        super(props) // call super parent class constructor props
+        super(props) 
         this.state = {
             value: null
         } 
     }
 
     toggleSquare = (e) => {
-        this.setState({value: "X"}, () => console.log(this.state.value));
-        console.log("Square Button Clicked!"); 
+        this.setState({value: "X"}); 
     }
 
     render() {
-        // console.log(this.state.value);
         return (
             <div className="Square">
 
