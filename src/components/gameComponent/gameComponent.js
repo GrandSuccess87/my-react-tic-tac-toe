@@ -5,19 +5,23 @@ import logo from '../../images/game-logo3.png';
 
 class Main extends Component {
 
-        constructor(props) {
-        super(props) 
+        constructor() {
+        super(); 
         this.state = {
-            show: false
-        
-        } 
+            show: false,
+            disabled: false // button will not be disabled
+        }; 
     }
 
-    toggleDiv = (e) => {
-        e.preventDefault();
+    toggleBoard = (e) => {
         const { show } = this.state;
         this.setState({show: !show}) 
 
+    }
+
+    handleClick = () => {
+        // button will be disabled
+        this.setState({disabled: !this.state.disabled});
     }
 
     render() {
@@ -27,8 +31,12 @@ class Main extends Component {
                 <h2>Welcome to React Tic Tac Toe</h2>
                 <img src={logo} className="App-logo" alt="logo" /> <br />
                 <div className="start_game">
-                    <button type="button" onClick={this.toggleDiv} className="btn btn-outline-primary">Start Game</button>
-                    {this.state.show && <Board /> } 
+                {/* <button onClick={this.handleClick}>First Button</button>
+                
+                <button disabled={this.state.disabled}>Second Button</button>
+                 */}
+                <button type="button" onClick={this.toggleBoard} className="btn btn-outline-primary">Start Game</button>
+                {this.state.show && <Board /> }
 
                 </div>
                 </div>
