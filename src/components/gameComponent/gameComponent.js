@@ -31,11 +31,8 @@ class Main extends Component {
                 <h2>Welcome to React Tic Tac Toe</h2>
                 <img src={logo} className="App-logo" alt="logo" /> <br />
                 <div className="start_game">
-                {/* <button onClick={this.handleClick}>First Button</button>
-                
-                <button disabled={this.state.disabled}>Second Button</button>
-                 */}
-                <button show={this.state.show && <Board /> } type="button" onClick={this.toggleBoard} className="btn btn-outline-primary">Start Game</button>
+                <button type="button" onClick={this.toggleBoard} className="btn btn-outline-primary">Start Game</button>
+                {this.state.show ? <Board /> : <span /> }
                 
 
                 </div>
