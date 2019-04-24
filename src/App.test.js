@@ -21,7 +21,7 @@ it('shows loads game component without crashing', () => {
   ReactDOM.unmountComponentAtNode(boardDiv);
 });
 
-//Sample test
+// Sample test
 // it('should toggle second buttons disabled state', () => {
 //   const wrapper = shallow(<Game />);
 //   const firstButton = wrapper.find('button').at(0);
@@ -40,10 +40,10 @@ it('should render the board', () => {
   const button = wrapper.find('button').at(0)
 
   button.simulate('click');
-  expect(button.props().show).toEqual(true);
+  expect("show" in button.props()).toEqual(true);
 
   button.simulate('click');
-  expect(button.props().show).toEqual(false);
+  expect("show" in button.props()).toEqual(false);
 });
 
 it('asserts false', () => {

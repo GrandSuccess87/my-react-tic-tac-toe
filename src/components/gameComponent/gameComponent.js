@@ -35,8 +35,8 @@ class Main extends Component {
                 
                 <button disabled={this.state.disabled}>Second Button</button>
                  */}
-                <button type="button" onClick={this.toggleBoard} className="btn btn-outline-primary">Start Game</button>
-                {this.state.show && <Board /> }
+                <button show={this.state.show && <Board /> } type="button" onClick={this.toggleBoard} className="btn btn-outline-primary">Start Game</button>
+                
 
                 </div>
                 </div>
