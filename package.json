@@ -6,6 +6,8 @@
     "bootstrap": "^4.3.1",
     "chai": "^4.2.0",
     "heroku": "^7.22.9",
+    "jest-environment-enzyme": "^7.0.2",
+    "jest-enzyme": "^7.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
