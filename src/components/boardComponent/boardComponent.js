@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Row from '../rowComponent/rowComponent';
+import Square from '../squareComponent/squareComponent';
+import './board.css'
 
 class Board extends Component {
 
@@ -8,18 +9,26 @@ class Board extends Component {
             <div className="Board Board_Row">
                 <div className="text instructions-text">
                     <div className="row">
-                        <div className="board-grid col-lg-12 col-md-12 col-sm-12">
-                            <Row />
-                            <Row />
-                            <Row />
+                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <Square />
+                            <Square />
+                            <Square />
+                        </div>
+                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <Square />
+                            <Square />
+                            <Square />
+                        </div>
+                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <Square />
+                            <Square />
+                            <Square />
                         </div>
                     </div>
                 </div>
             </div>
-
         );
     }
-
 }
 
 
