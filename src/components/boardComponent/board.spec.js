@@ -8,16 +8,16 @@ import Square from '../squareComponent/squareComponent';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Board Component', () => {
-    it('renders the Board component without crashing', () => {
-        const boardDiv = document.createElement('div');
-        ReactDOM.render(<GameBoard />, boardDiv);
-        ReactDOM.unmountComponentAtNode(boardDiv);
-    });
+  it('renders the Board component without crashing', () => {
+    const boardDiv = document.createElement('div');
+    ReactDOM.render(<GameBoard />, boardDiv);
+    ReactDOM.unmountComponentAtNode(boardDiv);
+  });
 
-    it('renders 9 Square components', () => {
-      const wrapper = mount(<GameBoard />);
+  it('renders 9 Square components', () => {
+    const wrapper = mount(<GameBoard />);
 
-      expect(wrapper.find(Square).length).toBe(9);
-    });
+    expect(wrapper.find(Square).length).toBe(9);
+  });
 
 });
