@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from "./components/mainComponent/mainComponent";
-import GameHeader from "./components/gameHeaderComponent/gameHeaderComponent";
+import Game from "./pages/game/game";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -9,8 +9,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" component={Main}></Route>
-          <Route exact path="/game" component={GameHeader}></Route>
+          <Route exact path="/" component={Main} />
+          <Route exact path="/game" component= {Game}></Route>
         </Switch>
       </Router>
     );
