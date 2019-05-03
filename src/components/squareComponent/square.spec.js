@@ -18,7 +18,6 @@ describe('Square Component', () => {
 
       it('renders one Square component within the Board componenet without crashing', () => {
         const wrapper = shallow(<GameBoard />);
-        const boardGridDiv = wrapper.find(GameSquare);
         expect(wrapper.contains(<GameSquare />)).toBe(true);
       });
 
