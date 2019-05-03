@@ -6,22 +6,22 @@ import './board.css';
 
 class Board extends Component {
 
-       render() {
-            return (
-                <div>
-                    <GameHeader />
-                    <div className="Board">
-                        <div className="container">
-                            <div className="row">
-                                <div className="board-grid">
-                                    { [...Array(9)].map(() => <Square /> )}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-       }
+  render() {
+    return (
+      <div>
+        <GameHeader />
+        <div className="Board">
+          <div className="container">
+            <div className="row">
+              <div className="board-grid">
+                { [...Array(9)].map(() => <Square /> )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 

@@ -3,13 +3,13 @@ import './squareComp.css';
 
 class Square extends Component {
 
-    render() {
-        return (
-            <div>
-                <div className="game-spaces" id="space"></div>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <div className="game-spaces" id="space"></div>
+      </div>
+    );
+  }
 }
 
 

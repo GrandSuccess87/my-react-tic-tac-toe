@@ -8,10 +8,10 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Square Component', () => {
 
-    it('renders the Square component without crashing', () => {
-        const gameSpaceDiv = document.createElement('div');
-        ReactDOM.render(<GameSquare />, gameSpaceDiv);
-        ReactDOM.unmountComponentAtNode(gameSpaceDiv);
-      });
+  it('renders the Square component without crashing', () => {
+    const gameSpaceDiv = document.createElement('div');
+    ReactDOM.render(<GameSquare />, gameSpaceDiv);
+    ReactDOM.unmountComponentAtNode(gameSpaceDiv);
+  });
 
 });
