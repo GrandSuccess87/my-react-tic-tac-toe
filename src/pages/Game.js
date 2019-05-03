@@ -9,6 +9,6 @@ export default class GamePage extends React.Component {
                     <Game />
                 </div>
             </div>
-        )
+        );
     }
 }

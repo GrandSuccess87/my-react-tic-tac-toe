@@ -16,7 +16,7 @@ class Main extends Component {
                         <a className="game-page" href="./game"><span><div id="start">Start Game</div></span></a>
                     </div>
                 </div>
-          </div>
+            </div>
         );
     }
 }
