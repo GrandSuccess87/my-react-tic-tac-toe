@@ -1,1 +1,1 @@
-export { default } from "./boardComponent"
+export { default } from "./boardComponent";
