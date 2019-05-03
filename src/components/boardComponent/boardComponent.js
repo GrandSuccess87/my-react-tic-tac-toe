@@ -14,15 +14,7 @@ class Board extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="board-grid">
-                                    <Square />
-                                    <Square />
-                                    <Square />
-                                    <Square />
-                                    <Square />
-                                    <Square />
-                                    <Square />
-                                    <Square />
-                                    <Square />
+                                    { [...Array(9)].map(() => <Square /> )}
                                 </div>
                             </div>
                         </div>
