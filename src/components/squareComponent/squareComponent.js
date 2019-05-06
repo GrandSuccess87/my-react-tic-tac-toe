@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import './squareComp.css';
+import './squareComponent.css';
 
 class Square extends Component {
 
   render() {
     return (
-      <div>
-        <div className="game-spaces" id="space"></div>
+      <div
+        onClick={this.props.toggleMarker}
+        disabled={this.props.value != null}
+        className="game-spaces space"
+        id={this.props.id}>
+        {this.props.value}
       </div>
     );
   }
 }
-
 
 export default Square;

@@ -13,5 +13,7 @@ describe('Main Component', () => {
     wrapper.find('a').simulate('click');
 
     expect(wrapper.find('[href="./game"]').length).toBe(1);
+
   });
+
 });

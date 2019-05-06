@@ -3,15 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "acorn": "^6.0.0",
     "bootstrap": "^4.3.1",
     "chai": "^4.2.0",
-    "heroku": "^7.22.9",
+    "fsevents": "^2.0.6",
+    "heroku": "^7.24.3",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
+    "jquery": "^1.9.1",
+    "popper.js": "^1.14.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "ts-pnp": "^1.1.2",
+    "typescript": "^3.4.5",
+    "watchman": "^1.0.0"
   },
   "scripts": {
     "lint": "eslint src",
@@ -29,6 +36,6 @@
   ],
   "devDependencies": {
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1"
+    "enzyme-adapter-react-16": "^1.13.0"
   }
 }

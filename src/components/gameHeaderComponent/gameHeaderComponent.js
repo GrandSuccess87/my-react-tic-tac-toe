@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import './gameHeaderComp.css';
+import './gameHeaderComponent.css';
 
 class GameHeader extends Component {
+
   render() {
     return (
       <div>
