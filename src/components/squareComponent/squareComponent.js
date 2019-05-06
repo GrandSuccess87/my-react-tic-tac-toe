@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
+import './squareComp.css';
 
 class Square extends Component {
 
-    constructor(props) {
-        super(props) 
-        this.state = {
-            value: null     
-        } 
-    }
-
-    toggleSquare = () => {
-        this.setState({value: "X"}, () => console.log(this.state.value));
-        console.log("Square Button Clicked!"); 
-    }
-
-    render() {
-        return (
-            <div className="Square">
-
-                <div>
-                    <button type="button" onClick={this.toggleSquare} className="btn btn-outline-primary board-Square">{this.state.value}</button> 
-                </div>
-
-            </div>
-
-        );
-    }
-
+  render() {
+    return (
+      <div>
+        <div className="game-spaces" id="space"></div>
+      </div>
+    );
+  }
 }
 
 

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import Game from "./components/gameComponent/gameComponent";
+import Pages from "./pages/index";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12">
-            <Game />
-          </div>
-        </div>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Pages.Main} />
+          <Route exact path="/game" component= {Pages.Game} />
+        </Switch>
+      </Router>
     );
   }
 }

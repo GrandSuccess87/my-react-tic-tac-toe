@@ -1,4 +1,6 @@
 .board-grid {
-    padding-right: 0px;
-    padding-left: 0px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: auto;
 }

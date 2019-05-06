@@ -1,37 +1,27 @@
+
 import React, { Component } from 'react';
 import Square from '../squareComponent/squareComponent';
-import './board.css'
-
+import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
+import './board.css';
 
 class Board extends Component {
 
-    render() {
-        return (
-            <div className="Board Board_Row">
-                <div className="text instructions-text">
-                    <div className="row">
-                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <Square />
-                            <Square />
-                            <Square />
-                        </div>
-                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <Square />
-                            <Square />
-                            <Square />
-                        </div>
-                        <div className="board-grid col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <Square />
-                            <Square />
-                            <Square />
-                        </div>
-                    </div>
-                </div>
+  render() {
+    return (
+      <div>
+        <GameHeader />
+        <div className="Board">
+          <div className="container">
+            <div className="row">
+              <div className="board-grid">
+                { [...Array(9)].map(() => <Square /> )}
+              </div>
             </div>
-
-        );
-    }
-
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 

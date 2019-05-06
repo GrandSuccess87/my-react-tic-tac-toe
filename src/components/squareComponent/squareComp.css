@@ -1,0 +1,13 @@
+#space {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid black;
+    z-index: 1;
+}
+
+#space:hover {
+    background-color: rgba(163, 223, 228, 0.87);
+}

@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+Enzyme.configure({ adapter: new Adapter() });
 
-it('asserts false', () => {
-  expect(false).toEqual(false);
-});
+describe('Tic Tac Toe Application', () => {
 
-it('asserts true', () => {
-  expect(true).toEqual(true);
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
 });
