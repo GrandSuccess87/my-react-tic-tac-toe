@@ -1,4 +1,4 @@
-#space {
+.space {
     width: 80px;
     height: 80px;
     background-color: white;
@@ -6,8 +6,15 @@
     text-align: center;
     border: 1px solid black;
     z-index: 1;
+    line-height: 50px;
+    font-size: 32px;
 }
 
-#space:hover {
+.space:hover {
     background-color: rgba(163, 223, 228, 0.87);
+}
+
+.game-spaces[disabled] {
+  pointer-events: none;
+  opacity: 0.8;
 }
