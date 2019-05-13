@@ -38,7 +38,8 @@ render() {
             {this.state.squares.map((square) => {
               return (
                 <Square
-                  {...square}
+                  value={square.value}
+                  id={square.id}
                   key={square.id}
                   toggleMarker={this.toggleMarker}
                 />
