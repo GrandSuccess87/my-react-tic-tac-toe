@@ -4,11 +4,7 @@ import Game from '../components/boardComponent/boardComponent';
 export default class GamePage extends React.Component {
   render() {
     return (
-      <div>
-        <div>
-          <Game />
-        </div>
-      </div>
+      <Game />
     );
   }
 }
