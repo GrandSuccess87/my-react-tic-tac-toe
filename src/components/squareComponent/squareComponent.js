@@ -7,7 +7,7 @@ class Square extends Component {
     return (
       <div
         onClick={this.props.toggleMarker}
-        disabled={this.props.value != null}
+        disabled={this.props.value}
         className="game-spaces space"
         id={this.props.id}>
         {this.props.value}

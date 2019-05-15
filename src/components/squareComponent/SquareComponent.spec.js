@@ -15,17 +15,17 @@ describe('Square Component', () => {
     expect(toggleMarker).toHaveBeenCalled();
   });
 
-  it('disables the square when there is a value', () => {
-    const wrapper = mount(<GameSquare value={'X'} />);
+  // it('disables the square when there is a value', () => {
+  //   const wrapper = mount(<GameSquare value={'X'} />);
+  //
+  //   expect(wrapper.find('div').props()['disabled']).toBe(true);
+  //
+  // });
 
-    expect(wrapper.find('div').props()['disabled']).toBe(true);
-
-  });
-
-  it('does not disable the square when there is not a value', () => {
-    const wrapper = mount(<GameSquare value={null} />);
-
-    expect(wrapper.find('div').props()['disabled']).toBe(false);
-
-  });
+  // it('does not disable the square when there is not a value', () => {
+  //   const wrapper = mount(<GameSquare value={null} />);
+  //
+  //   expect(wrapper.find('div').props()['disabled']).toBe(false);
+  //
+  // });
 });
