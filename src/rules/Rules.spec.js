@@ -41,7 +41,7 @@ describe('Rules for the game', () => {
 
       expect(rules.checkSecondRow(boardState.currentBoard())).toEqual("X WON");
     });
-    //
+
     test('3 Os in a second row', () => {
       let rules = new Rules();
       let boardState = new BoardState();
@@ -97,7 +97,7 @@ describe('Rules for the game', () => {
 
       expect(rules.checkRow(boardState.currentBoard())).toEqual("KEEP TRYING");
     });
-    //
+
     test('3 Xs not in the second row', () => {
       let rules = new Rules();
       let boardState = new BoardState();

@@ -16,8 +16,6 @@ class Board extends Component {
 toggleMarker = (event) => {
   const squareIndex = event.target.id;
   let boardState = this.state.boardState;
-  // console.log(boardState);
-
   boardState.mark(squareIndex,this.state.value);
   this.setState({
     value: this.state.value === 'X' ? 'O' : 'X',
