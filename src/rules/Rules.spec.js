@@ -1,4 +1,4 @@
-import Rules from './rules';
+import Rules from './Rules';
 import BoardState from '../boardState/boardState';
 
 describe('Rules for the game', () => {
