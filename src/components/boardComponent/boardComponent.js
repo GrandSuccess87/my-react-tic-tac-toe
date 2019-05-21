@@ -2,29 +2,23 @@ import React, { Component } from 'react';
 import Square from '../squareComponent/squareComponent';
 import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import './BoardComponent.css';
+import Board from '../../board/board';
 
-class Board extends Component {
+class BoardComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      board: new Board(),
       value: 'X',
-      squares: [...Array(9)].map((square, index) => {
-        return { id: index, value: null};
-      })
     };
   }
 
 toggleMarker = (event) => {
   const squareIndex = event.target.id;
-  const squaresArray = this.state.squares;
-  squaresArray.splice(
-    squareIndex,
-    1,
-    { id: squareIndex, value: this.state.value }
-  );
+  let board = this.state.board;
+  board.makeMark(squareIndex,this.state.value);
   this.setState({
     value: this.state.value === 'X' ? 'O' : 'X',
-    squares: squaresArray
   });
 }
 
@@ -35,11 +29,12 @@ render() {
       <div className="container">
         <div className="row">
           <div className="board-grid">
-            {this.state.squares.map((square) => {
+            {this.state.board.marks().map((mark, index) => {
               return (
                 <Square
-                  {...square}
-                  key={square.id}
+                  id={index}
+                  value={mark}
+                  key={index}
                   toggleMarker={this.toggleMarker}
                 />
               );
@@ -52,4 +47,4 @@ render() {
 }
 }
 
-export default Board;
+export default BoardComponent;
