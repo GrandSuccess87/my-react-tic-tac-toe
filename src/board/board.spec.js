@@ -1,27 +1,27 @@
 import Board from './board';
 
-describe('Updates board', () => {
-  it('Places a X symbol on current board', () => {
-    let boardState = new Board();
+describe('Marking the board', () => {
+  it('places a X symbol on current board', () => {
+    let board = new Board();
 
-    boardState.mark(3, "X");
+    board.makeMark(3, "X");
 
-    expect(boardState.currentBoard()).toEqual(["","","","X","","","","",""]);
+    expect(board.marks()).toEqual(["","","","X","","","","",""]);
   });
 
-  it('Places an O symbol on current board', () => {
-    let boardState = new Board();
+  it('places an O symbol on current board', () => {
+    let board = new Board();
 
-    boardState.mark(7, "O");
+    board.makeMark(7, "O");
 
-    expect(boardState.currentBoard()).toEqual(["","","","","","","","O",""]);
+    expect(board.marks()).toEqual(["","","","","","","","O",""]);
   });
 
-  it('Places no symbol on current board', () => {
-    let boardState = new Board();
+  it('places no symbol on current board', () => {
+    let board = new Board();
 
-    boardState.mark("");
+    board.makeMark("");
 
-    expect(boardState.currentBoard()).toEqual(["","","","","","","","",""]);
+    expect(board.marks()).toEqual(["","","","","","","","",""]);
   });
 });

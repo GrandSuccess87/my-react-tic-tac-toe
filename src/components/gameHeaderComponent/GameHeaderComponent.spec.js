@@ -8,7 +8,5 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Header Component', () => {
   it('renders the Game header component without crashing', () => {
     const wrapper = mount(<GameHeader />);
-
-    wrapper.unmount();
   });
 });

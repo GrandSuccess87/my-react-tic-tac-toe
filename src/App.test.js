@@ -9,7 +9,5 @@ describe('Tic Tac Toe Application', () => {
 
   it('renders without crashing', () => {
     const wrapper = mount(<App />);
-
-    wrapper.unmount();
   });
 });

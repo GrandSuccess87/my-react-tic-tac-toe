@@ -1,11 +1,11 @@
 export default class Board {
-  currentSpot = ["","","","","","","","",""];
+  currentSpots = ["","","","","","","","",""];
 
-  mark = (index, symbol) => {
-    this.currentSpot[index] = symbol;
+  makeMark = (index, symbol) => {
+    this.currentSpots[index] = symbol;
   }
 
-  currentBoard = () => {
-    return this.currentSpot;
+  marks = () => {
+    return this.currentSpots;
   }
 }
