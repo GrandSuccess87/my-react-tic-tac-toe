@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Square from '../squareComponent/squareComponent';
 import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import './BoardComponent.css';
-import BoardState from '../../boardState/boardState';
+import BoardView from '../../board/board';
 
 class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boardState: new BoardState(),
+      boardState: new BoardView(),
       value: 'X',
     };
   }
@@ -30,7 +30,6 @@ render() {
         <div className="row">
           <div className="board-grid">
             {this.state.boardState.currentBoard().map((mark, index) => {
-              // console.log(this.state.boardState.currentBoard());
               return (
                 <Square
                   id={index}

@@ -1,15 +1,11 @@
 import Rules from './Rules';
-import BoardState from '../boardState/boardState';
+import Board from '../board/board';
 
 describe('Rules for the game', () => {
-  test('it is false', () => {
-    expect(0).toBe(0);
-  });
-
   describe('Winner in a row', () => {
-    test('3 Xs in first row', () => {
+    it('checks for 3 Xs in first row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(0, "X");
       boardState.mark(1, "X");
@@ -19,9 +15,9 @@ describe('Rules for the game', () => {
 
     });
 
-    test('3 Os in first row', () => {
+    it('checks for 3 Os in first row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(0, "O");
       boardState.mark(1, "O");
@@ -31,9 +27,9 @@ describe('Rules for the game', () => {
 
     });
 
-    test('3 Xs in second row', () => {
+    it('checks for 3 Xs in second row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(3, "X");
       boardState.mark(4, "X");
@@ -42,9 +38,9 @@ describe('Rules for the game', () => {
       expect(rules.checkSecondRow(boardState.currentBoard())).toEqual("X WON");
     });
 
-    test('3 Os in a second row', () => {
+    it('checks for 3 Os in second row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(3, "O");
       boardState.mark(4, "O");
@@ -54,9 +50,9 @@ describe('Rules for the game', () => {
 
     });
 
-    test('3 Xs in last row', () => {
+    it('checks for 3 Xs in last row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(6, "X");
       boardState.mark(7, "X");
@@ -65,9 +61,9 @@ describe('Rules for the game', () => {
       expect(rules.checkThirdRow(boardState.currentBoard())).toEqual("X WON");
     });
 
-    test('3 Os in last row', () => {
+    it('checks for 3 Os in last row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(6, "O");
       boardState.mark(7, "O");
@@ -76,9 +72,9 @@ describe('Rules for the game', () => {
       expect(rules.checkThirdRow(boardState.currentBoard())).toEqual("O WON");
     });
 
-    test('3 Xs not in the first row', () => {
+    it('checks that 3 Xs are not in the first row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(0, "X");
       boardState.mark(1, "X");
@@ -87,9 +83,9 @@ describe('Rules for the game', () => {
       expect(rules.checkRow(boardState.currentBoard())).toEqual("KEEP TRYING");
     });
 
-    test('3 Os not in the first row', () => {
+    it('checks that 3 Os are not in the first row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(0, "O");
       boardState.mark(1, "O");
@@ -98,9 +94,9 @@ describe('Rules for the game', () => {
       expect(rules.checkRow(boardState.currentBoard())).toEqual("KEEP TRYING");
     });
 
-    test('3 Xs not in the second row', () => {
+    it('checks that 3 Xs are not in the second row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(3, "X");
       boardState.mark(4, "X");
@@ -109,9 +105,9 @@ describe('Rules for the game', () => {
       expect(rules.checkRow(boardState.currentBoard())).toEqual("KEEP TRYING");
     });
 
-    test('3 Os not in the third row', () => {
+    it('checks that 3 Os are not in the third row', () => {
       let rules = new Rules();
-      let boardState = new BoardState();
+      let boardState = new Board();
 
       boardState.mark(6, "O");
       boardState.mark(7, "O");

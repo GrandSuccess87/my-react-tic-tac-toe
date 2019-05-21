@@ -28,6 +28,7 @@ describe('Board Component', () => {
     it('is a X', () => {
       const wrapper = mount(<GameBoard />);
       const square = wrapper.find(Square).at(0);
+
       square.simulate('click');
 
       expect(square.text()).toBe('X');

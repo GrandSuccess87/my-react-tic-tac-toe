@@ -9,7 +9,6 @@ state = {
 
 componentDidMount = async () => {
   let result = await request();
-  console.log(result);
   this.setState({
     boardSpots: result
   });
@@ -17,11 +16,9 @@ componentDidMount = async () => {
 
 render() {
   return (
-
     <div>
       {this.state.boardSpots}
     </div>
-
   );
 }
 }

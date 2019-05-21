@@ -1,21 +1,36 @@
-import mockAxios from "axios";
+import fakeAxios from "axios";
 import request from "../phoenixAPI";
 
-it("fetches data from request", async () => {
+describe("GET Request", () => {
+
+  it("fetches data from request", async () => {
   // setup
-  mockAxios.get.mockImplementationOnce(() =>
-    Promise.resolve({
-      data: { spots: ["empty board"] }
-    })
-  );
+    fakeAxios.get.mockImplementationOnce(() =>
+      Promise.resolve({
+        data: { spots: ["empty board"] }
+      })
+    );
 
-  // work
-  const board = await request("");
+    // work
+    const board = await request("");
 
-  // expect
-  expect(board).toEqual(["empty board"]);
-  expect(mockAxios.get).toHaveBeenCalledTimes(1);
-  expect(mockAxios.get).toHaveBeenCalledWith(
-    "https://ttt-json-api.herokuapp.com/"
-  );
+    // expect
+    expect(board).toEqual(["empty board"]);
+
+  });
+
+  it("calls axios with correct url", async () => {
+  // setup
+    fakeAxios.get.mockImplementationOnce(() =>
+      Promise.resolve({
+        data: { spots: ["empty board"] }
+      })
+    );
+
+    // expect
+    expect(fakeAxios.get).toHaveBeenCalledTimes(1);
+    expect(fakeAxios.get).toHaveBeenCalledWith(
+      "https://ttt-json-api.herokuapp.com/"
+    );
+  });
 });
