@@ -12,6 +12,8 @@ class GameHeader extends Component {
   render() {
     return (
       <div>
+        <h2>Player 1's Turn</h2>
+        <h2>Player 2's Turn</h2>
       </div>
     );
   }
