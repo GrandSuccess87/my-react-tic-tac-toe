@@ -20,15 +20,8 @@ describe("GET Request", () => {
   });
 
   it("calls axios with correct url", async () => {
-  // setup
-    fakeAxios.get.mockImplementation(() =>
-      Promise.resolve({
-        data: { spots: ["empty board"]}
-      })
-    );
 
     // expect
-    expect(fakeAxios.get).toHaveBeenCalledTimes(1);
     expect(fakeAxios.get).toHaveBeenCalledWith(
       "https://ttt-json-api.herokuapp.com/"
     );
@@ -59,12 +52,6 @@ describe("GET status of the game", () => {
     });
 
   it("calls axios with correct url and parameters", async () => {
-    // setup
-    fakeAxios.get.mockImplementation(() =>
-      Promise.resolve({
-        data: { status: ["in progress"] }
-      })
-    );
 
     // expect
     expect(fakeAxios.get).toHaveBeenCalledWith(

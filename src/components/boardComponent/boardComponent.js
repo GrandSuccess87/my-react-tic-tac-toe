@@ -3,6 +3,8 @@ import Square from '../squareComponent/squareComponent';
 import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import './BoardComponent.css';
 import Board from '../../board/board';
+import PhoenixApi from '../../services/phoenixAPI';
+
 
 class BoardComponent extends Component {
   constructor(props) {
@@ -10,7 +12,18 @@ class BoardComponent extends Component {
     this.state = {
       board: new Board(),
       value: 'X',
+      gameStatus: ''
     };
+  }
+
+
+  componentDidMount = async () => {
+    let next_player = this.state.value === 'X' ? 'O' : 'X'
+    let marks = this.state.board.marks()
+    console.log(marks)
+    this.setState({
+      gameStatus: this.state.gameStatus = await PhoenixApi.requestStatus(marks, next_player, this.state.value)
+    })
   }
 
 toggleMarker = (event) => {
@@ -25,7 +38,9 @@ toggleMarker = (event) => {
 render() {
   return (
     <div>
-      <GameHeader />
+      <GameHeader 
+        value={this.state.gameStatus}
+      />
       <div className="container">
         <div className="row">
           <div className="board-grid">

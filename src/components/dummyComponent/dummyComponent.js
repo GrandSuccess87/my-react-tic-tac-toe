@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import request from '../../services/phoenixAPI';
+import PhoenixApi from '../../services/phoenixAPI';
 
 class Dummy extends Component {
 
@@ -8,7 +8,7 @@ state = {
 }
 
 componentDidMount = async () => {
-  let result = await request();
+  let result = await PhoenixApi.request();
   this.setState({
     boardSpots: result
   });
