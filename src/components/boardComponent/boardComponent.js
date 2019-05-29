@@ -17,14 +17,15 @@ class BoardComponent extends Component {
   }
 
 
-  componentDidMount = async () => {
-    let next_player = this.state.value === 'X' ? 'O' : 'X'
-    let marks = this.state.board.marks()
-    console.log(marks)
-    this.setState({
-      gameStatus: this.state.gameStatus = await PhoenixApi.requestStatus(marks, next_player, this.state.value)
-    })
-  }
+getStatus = async () => {
+  let next_player = this.state.value === 'X' ? 'O' : 'X';
+  let current_player = this.state.value;
+  let marks = this.state.board.marks()
+  console.log(marks)
+  this.setState({
+    gameStatus: this.state.gameStatus = await PhoenixApi.requestStatus(marks, next_player, current_player)
+  })
+}
 
 toggleMarker = (event) => {
   const squareIndex = event.target.id;
@@ -33,18 +34,21 @@ toggleMarker = (event) => {
   this.setState({
     value: this.state.value === 'X' ? 'O' : 'X',
   });
+  this.getStatus();
 }
 
 render() {
   return (
     <div>
       <GameHeader 
-        value={this.state.gameStatus}
+        value={this.state.gameStatus }
       />
       <div className="container">
         <div className="row">
           <div className="board-grid">
             {this.state.board.marks().map((mark, index) => {
+              let regex = /[0-9]/g;
+              mark = mark.match(regex) ? '' : mark
               return (
                 <Square
                   id={index}
