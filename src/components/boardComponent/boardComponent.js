@@ -13,7 +13,6 @@ class BoardComponent extends Component {
       board: new Board(),
       value: 'X',
       gameStatus: 'in progress',
-      disabled: false
     };
   }
 
@@ -24,16 +23,6 @@ getStatus = async () => {
   this.setState({
     gameStatus: this.state.gameStatus = await PhoenixApi.requestStatus(marks, next_player, current_player)
   })
-  this.updateStatusDisabler();
-
-}
-
-updateStatusDisabler = () => {
-  if(this.state.gameStatus === 'in progress') {
-    this.setState({disabled:false})
-  } else {
-    this.setState({disabled:true})
-  }
 }
 
 toggleMarker = (event) => {
@@ -56,7 +45,7 @@ render() {
         <div className="row">
           <div 
             className="board-grid game-status" 
-            disabled={this.state.disabled}
+            disabled={this.state.gameStatus !== 'in progress'}
           >
             {this.state.board.marks().map((mark, index) => {
               let regex = /[0-9]/g;
