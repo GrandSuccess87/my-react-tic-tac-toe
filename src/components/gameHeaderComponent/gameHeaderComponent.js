@@ -3,6 +3,7 @@ import './GameHeaderComponent.css';
 
 
 class GameHeader extends Component {
+
   render() {
     return (
       <div>

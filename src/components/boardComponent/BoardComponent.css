@@ -4,3 +4,8 @@
     width: 300px;
     margin: 20% auto;
 }
+.game-status[disabled] {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+  

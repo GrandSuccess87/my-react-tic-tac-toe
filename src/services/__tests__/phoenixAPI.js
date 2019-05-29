@@ -52,15 +52,17 @@ describe("GET status of the game", () => {
     });
 
   it("calls axios with correct url and parameters", async () => {
+    //setup
+    const spots = ["X", "O", "X",
+                   "O", "O", "X",
+                   "O", "8", "9"]
 
     // expect
     expect(fakeAxios.get).toHaveBeenCalledWith(
       "https://ttt-json-api.herokuapp.com/status/",
       {
         params: {
-          spots: ["X", "O", "X",
-                  "O", "O", "X",
-                  "O", "8", "9"],
+          spots: JSON.stringify(spots).replace(/,/g, ', '),
           current_player: "O",
           next_player: "X"
         }
