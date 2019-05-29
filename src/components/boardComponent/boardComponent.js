@@ -20,9 +20,19 @@ getStatus = async () => {
   let next_player = this.state.value === 'X' ? 'O' : 'X';
   let current_player = this.state.value;
   let marks = this.state.board.marks()
+  let newMarks = this.addIndices(marks);
+  console.log(newMarks);
+
   this.setState({
-    gameStatus: this.state.gameStatus = await PhoenixApi.requestStatus(marks, next_player, current_player)
+    gameStatus: this.state.gameStatus = await PhoenixApi.requestStatus(newMarks, next_player, current_player)
   })
+}
+
+addIndices = (marks) => {
+  let newMarks = marks.map((mark, index) => {
+    return mark === '' ? index + 1 : mark;
+  })
+  return newMarks
 }
 
 toggleMarker = (event) => {
@@ -48,8 +58,8 @@ render() {
             disabled={this.state.gameStatus !== 'in progress'}
           >
             {this.state.board.marks().map((mark, index) => {
-              let regex = /[0-9]/g;
-              mark = mark.match(regex) ? '' : mark
+              // let regex = /[0-9]/g;
+              // mark = mark.match(regex) ? '' : mark
               return (
                 <Square
                   id={index}
