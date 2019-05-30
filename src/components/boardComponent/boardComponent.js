@@ -4,6 +4,7 @@ import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import './BoardComponent.css';
 import Board from '../../board/board';
 import PhoenixApi from '../../services/phoenixAPI';
+import Statuses from '../gameHeaderComponent/gameHeaderEnum';
 
 
 class BoardComponent extends Component {
@@ -12,54 +13,38 @@ class BoardComponent extends Component {
     this.state = {
       board: new Board(),
       value: 'X',
-      gameStatus: 'in progress',
+      gameStatus: Statuses.IN_PROGRESS,
     };
   }
 
-getStatus = async () => {
-  let next_player = this.state.value === 'X' ? 'O' : 'X';
-  let current_player = this.state.value;
-  let marks = this.state.board.marks()
-  let newMarks = this.addIndices(marks);
-  console.log(newMarks);
-
-  this.setState({
-    gameStatus: this.state.gameStatus = await PhoenixApi.requestStatus(newMarks, next_player, current_player)
-  })
-}
-
-addIndices = (marks) => {
-  let newMarks = marks.map((mark, index) => {
-    return mark === '' ? index + 1 : mark;
-  })
-  return newMarks
-}
-
-toggleMarker = (event) => {
+toggleMarker = async (event) => {
   const squareIndex = event.target.id;
   let board = this.state.board;
   board.makeMark(squareIndex,this.state.value);
   this.setState({
     value: this.state.value === 'X' ? 'O' : 'X',
   });
-  this.getStatus();
+  let next_player = this.state.value === 'X' ? 'O' : 'X';
+  let current_player = this.state.value;
+  let marks = this.state.board.marks();
+  this.setState({
+    gameStatus: await PhoenixApi.getStatus(marks, next_player, current_player)
+  });
 }
 
 render() {
   return (
     <div>
-      <GameHeader 
+      <GameHeader
         value={this.state.gameStatus}
       />
       <div className="container">
         <div className="row">
-          <div 
-            className="board-grid game-status" 
-            disabled={this.state.gameStatus !== 'in progress'}
+          <div
+            className="board-grid game-status"
+            disabled={this.state.gameStatus !== Statuses.IN_PROGRESS}
           >
             {this.state.board.marks().map((mark, index) => {
-              // let regex = /[0-9]/g;
-              // mark = mark.match(regex) ? '' : mark
               return (
                 <Square
                   id={index}

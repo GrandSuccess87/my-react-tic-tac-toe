@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import './GameHeaderComponent.css';
+import Statuses from './gameHeaderEnum';
 
 
 class GameHeader extends Component {
+
   formatStatus = (status) => {
     switch(status) {
-      case 'in progress':
-        return 'keep playing!';
-      case 'X wins':
-        return 'YAAAAYY X WOOON!';
-      case 'O wins':
-        return 'GOOD JOB, O. YOU WON!';
-      case 'draw':
-        return 'It was a draw :/. Try again!';
-      default:
-        return '';
+    case Statuses.IN_PROGRESS:
+      return 'keep playing!';
+    case Statuses.X_WINS:
+      return 'YAAAAYY X WOOON!';
+    case Statuses.O_WINS:
+      return 'GOOD JOB, O. YOU WON!';
+    case Statuses.DRAW:
+      return 'It was a draw :/. Try again!';
+    default:
+      return '';
     }
   }
 
