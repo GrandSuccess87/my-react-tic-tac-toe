@@ -13,7 +13,10 @@ class Main extends Component {
           <h2>Welcome to React Tic Tac Toe</h2>
           <br/>
           <div className="start_game">
-            <a className="game-page" href="./game"><span><div id="start">Start Game</div></span></a>
+            <a className="human-page" href="./game"><span><div id="start">Human vs. Human</div></span></a>
+          </div>
+          <div className="start_game">
+            <a className="computer-page" href="./game/randomComputer"><span><div id="start">Random Computer vs. Human</div></span></a>
           </div>
         </div>
       </div>

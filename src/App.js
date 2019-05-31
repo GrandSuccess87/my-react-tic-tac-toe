@@ -11,6 +11,7 @@ class App extends Component {
           <Route exact path="/" component={Pages.Main} />
           <Route exact path="/game" component= {Pages.Game} />
           <Route exact path="/dummy" component= {Pages.Dummy} />
+          <Route exact path="/game/randomComputer" component= {Pages.Computer} />
         </Switch>
       </Router>
     );
