@@ -1,5 +1,9 @@
 .game-Header {
     text-align: center;
-    margin: 10% auto;
-    color: rgb(134, 32, 112);
+    margin: auto;
+    color: floralwhite;
+}
+
+.jumbotron {
+  background-color: lightblue;
 }
