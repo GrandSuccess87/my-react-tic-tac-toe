@@ -36,7 +36,8 @@ render() {
   return (
     <div>
       <GameHeader
-        value={this.state.gameStatus}
+        status={this.state.gameStatus}
+        player={this.state.value}
       />
       <div className="container">
         <div className="row">

@@ -5,10 +5,10 @@ import Statuses from './gameHeaderEnum';
 
 class GameHeader extends Component {
 
-  formatStatus = (status) => {
+  formatStatus = (status, player) => {
     switch(status) {
     case Statuses.IN_PROGRESS:
-      return 'keep playing!';
+      return `${player}'s Turn!`;
     case Statuses.X_WINS:
       return 'YAAAAYY X WOOON!';
     case Statuses.O_WINS:
@@ -23,7 +23,7 @@ class GameHeader extends Component {
   render() {
     return (
       <div>
-        {this.formatStatus(this.props.value)}
+        {this.formatStatus(this.props.status, this.props.player)}
       </div>
     );
   }

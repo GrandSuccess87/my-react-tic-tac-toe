@@ -33,29 +33,29 @@ describe("GET Request", () => {
 describe("GET status of the game", () => {
   afterEach(() => {
     jest.restoreAllMocks();
-  })
+  });
 
   it("fetches data for a game in progress", async () => {
     // setup
-      fakeAxios.get.mockImplementation(() =>
-        Promise.resolve({
-          data: { status: ["in progress"] }
-        })
-      );
+    fakeAxios.get.mockImplementation(() =>
+      Promise.resolve({
+        data: { status: ["in progress"] }
+      })
+    );
 
-      // work
-      const status = await PhoenixApi.requestStatus(["X", "O", "X", "O", "O", "X", "O", "8", "9"], "X", "O");
+    // work
+    const status = await PhoenixApi.requestStatus(["X", "O", "X", "O", "O", "X", "O", "8", "9"], "X", "O");
 
-      // expect
-      expect(status).toEqual(["in progress"]);
+    // expect
+    expect(status).toEqual(["in progress"]);
 
-    });
+  });
 
   it("calls axios with correct url and parameters", async () => {
     //setup
     const spots = ["X", "O", "X",
-                   "O", "O", "X",
-                   "O", "8", "9"]
+      "O", "O", "X",
+      "O", "8", "9"];
 
     // expect
     expect(fakeAxios.get).toHaveBeenCalledWith(
@@ -68,5 +68,5 @@ describe("GET status of the game", () => {
         }
       }
     );
-  })
-})
+  });
+});
