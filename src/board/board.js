@@ -5,6 +5,16 @@ export default class Board {
     this.currentSpots[index] = symbol;
   }
 
+  availableIndices = () => {
+    let availableIndices = []
+    this.currentSpots.forEach((spot, index) => {
+      if(spot === ""){
+        availableIndices.push(index)
+      }
+    })
+    return availableIndices;
+  }
+
   marks = () => {
     return this.currentSpots;
   }
