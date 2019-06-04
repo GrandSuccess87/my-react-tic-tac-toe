@@ -7,7 +7,6 @@ chunk = (array, size) => {
     chunk_arr.push(array.slice(index, index+size));
     index+=size;
   }
-  console.log(`chunk array: ${chunk_arr}`);
   return chunk_arr;
 
 }

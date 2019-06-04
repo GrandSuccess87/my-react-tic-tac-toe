@@ -1,18 +1,18 @@
 import fakeAxios from "axios";
-import request from "../phoenixAPI";
+import PhoenixApi from "../phoenixAPI";
 
 describe("GET Request", () => {
 
   it("fetches data from request", async () => {
   // setup
-    fakeAxios.get.mockImplementationOnce(() =>
+    fakeAxios.get.mockImplementation(() =>
       Promise.resolve({
-        data: { spots: ["empty board"] }
+        data: { spots: ["empty board"]}
       })
     );
 
     // work
-    const board = await request("");
+    const board = await PhoenixApi.request("");
 
     // expect
     expect(board).toEqual(["empty board"]);
@@ -20,17 +20,53 @@ describe("GET Request", () => {
   });
 
   it("calls axios with correct url", async () => {
-  // setup
-    fakeAxios.get.mockImplementationOnce(() =>
+
+    // expect
+    expect(fakeAxios.get).toHaveBeenCalledWith(
+      "https://ttt-json-api.herokuapp.com/"
+    );
+  });
+
+});
+
+
+describe("GET status of the game", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  it("fetches data for a game in progress", async () => {
+    // setup
+    fakeAxios.get.mockImplementation(() =>
       Promise.resolve({
-        data: { spots: ["empty board"] }
+        data: { status: ["in progress"] }
       })
     );
 
+    // work
+    const status = await PhoenixApi.requestStatus(["X", "O", "X", "O", "O", "X", "O", "8", "9"], "X", "O");
+
     // expect
-    expect(fakeAxios.get).toHaveBeenCalledTimes(1);
+    expect(status).toEqual(["in progress"]);
+
+  });
+
+  it("calls axios with correct url and parameters", async () => {
+    //setup
+    const spots = ["X", "O", "X",
+      "O", "O", "X",
+      "O", "8", "9"];
+
+    // expect
     expect(fakeAxios.get).toHaveBeenCalledWith(
-      "https://ttt-json-api.herokuapp.com/"
+      "https://ttt-json-api.herokuapp.com/status/",
+      {
+        params: {
+          spots: JSON.stringify(spots).replace(/,/g, ', '),
+          current_player: "O",
+          next_player: "X"
+        }
+      }
     );
   });
 });
