@@ -52,6 +52,7 @@ render() {
                   value={mark}
                   key={index}
                   toggleMarker={this.toggleMarker}
+                  humanMove={this.props.humanMove}
                 />
               );
             })}

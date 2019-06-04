@@ -12,11 +12,11 @@ class GameHeader extends Component {
     case Statuses.IN_PROGRESS:
       return `${player}'s Turn!`;
     case Statuses.X_WINS:
-      return 'YAAAAYY X WOOON! 🥳 😝';
+      return 'YAAAAYY X WOOON! 🥳 😝 🥰';
     case Statuses.O_WINS:
-      return 'GOOD JOB, O. YOU WON! 🤩 🥰';
+      return 'GOOD JOB, O. YOU WON! 🤩 🥰 😎';
     case Statuses.DRAW:
-      return 'It was a draw :/. Try again!';
+      return 'It was a draw 😣 . Try again! 😃';
     default:
       return '';
     }

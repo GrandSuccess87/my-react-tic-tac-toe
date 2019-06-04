@@ -5,7 +5,6 @@ import Square from '../squareComponent/squareComponent';
 
 class ComputerComponent extends Component {
 
-
 }
 
 export default ComputerComponent;
