@@ -3,8 +3,6 @@ import './GameHeaderComponent.css';
 import Statuses from './gameHeaderEnum';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
-
-
 class GameHeader extends Component {
 
   formatStatus = (status, player) => {
