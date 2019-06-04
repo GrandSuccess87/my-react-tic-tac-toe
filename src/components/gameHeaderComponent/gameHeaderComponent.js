@@ -15,6 +15,8 @@ class GameHeader extends Component {
       return 'GOOD JOB, O. YOU WON! 🤩 🥰 😎';
     case Statuses.DRAW:
       return 'It was a draw 😣 . Try again! 😃';
+    case Statuses.COMPUTER_THINKING:
+      return 'Computer\'s Turn';
     default:
       return '';
     }

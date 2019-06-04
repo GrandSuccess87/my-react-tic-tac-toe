@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import BoardComponent from '../boardComponent/boardComponent';
+import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import '../boardComponent/BoardComponent.css';
 import Computer from '../../computer/computer';
 import Board from '../../board/board';
 import PhoenixApi from '../../services/phoenixAPI';
-import Square from '../squareComponent/squareComponent';
+import statuses from '../gameHeaderComponent/gameHeaderEnum';
 
 class ComputerComponent extends Component {
     constructor(props) {
@@ -12,44 +13,60 @@ class ComputerComponent extends Component {
         this.state = {
             board: new Board(),
             computer: new Computer('X'),
-            human: 'O'
+            human: 'O',
+            gameStatus: statuses.IN_PROGRESS,
         };
     }
 
-    humanMove = async (event) => {
+    componentDidMount = async () => {
+        this.computerMove();
+      };
+
+    toggleMarker = async (event) => {
         const squareIndex = event.target.id;
         let board = this.state.board;
         board.makeMark(squareIndex,this.state.human);
+
         let next_player = this.state.computer.symbol;
         let current_player = this.state.human;
         let marks = this.state.board.marks();
         this.setState({
-          gameStatus: await PhoenixApi.getStatus(marks, next_player, current_player)
+          gameStatus: await PhoenixApi.getStatus(marks, next_player, current_player),
         });
-        this.computerMove();
+
+        if(this.state.gameStatus === statuses.IN_PROGRESS){
+            this.setState({
+                gameStatus: statuses.COMPUTER_THINKING
+            })
+            setTimeout( () => {this.computerMove()}, 1000)
+        }
       }
 
     computerMove = async () => {
         let board = this.state.board
         let computer = this.state.computer
-        computer.makeRandomMove(board, "");
+        computer.makeRandomMove(board, null);
+
         let current_player = computer.symbol;
         let next_player = this.state.human;
         let marks = this.state.board.marks();
         this.setState({
-            gameStatus: await PhoenixApi.getStatus(marks, next_player, current_player)
+            gameStatus: await PhoenixApi.getStatus(marks, next_player, current_player),
         });
     }
-
-    
 
     render() {
         return (
           <div>
-              <BoardComponent humanMove={this.humanMove}
-              />
-
-              <Square humanMove={this.humanMove} />
+            <GameHeader
+                status={this.state.gameStatus}
+                player={this.state.human}
+            />
+            <BoardComponent 
+                toggleMarker={this.toggleMarker}
+                board={this.state.board}
+                gameStatus={this.state.gameStatus}
+            />
           </div>
         );
     }
