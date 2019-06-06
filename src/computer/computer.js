@@ -5,7 +5,7 @@ export default class Computer {
     this.symbol = symbol;
   }
 
-  makeRandomMove = (board, seed) => {
+  makeMove = (board, seed) => {
     const random = new seedrandom(seed);
     let available_moves = board.availableIndices();
     let random_range = available_moves.length;

@@ -6,12 +6,12 @@ export default class Board {
   }
 
   availableIndices = () => {
-    let availableIndices = []
+    let availableIndices = [];
     this.currentSpots.forEach((spot, index) => {
       if(spot === ""){
-        availableIndices.push(index)
+        availableIndices.push(index);
       }
-    })
+    });
     return availableIndices;
   }
 

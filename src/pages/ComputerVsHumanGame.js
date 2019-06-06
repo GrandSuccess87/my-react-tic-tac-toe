@@ -1,5 +1,5 @@
 import React from 'react';
-import Computer from '../components/computerComponent/computerComponent';
+import Computer from '../components/computerVsHumanGameComponent/computerVsHumanGameComponent';
 
 export default class ComputerPage extends React.Component {
   render() {

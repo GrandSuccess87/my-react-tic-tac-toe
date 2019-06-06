@@ -7,7 +7,7 @@ describe("Random Computer", () => {
     let computer = new Computer("X");
     let seed = "seed";
 
-    computer.makeRandomMove(board, seed);
+    computer.makeMove(board, seed);
 
     expect(board.marks()).toEqual(["","","","","","X","","",""]);
   });
@@ -18,7 +18,7 @@ describe("Random Computer", () => {
     let computer = new Computer("X");
     let seed = "seed";
 
-    computer.makeRandomMove(board, seed);
+    computer.makeMove(board, seed);
 
     expect(board.marks()).toEqual(["O","X","","X","O","X","","O","X"]);
   });
@@ -29,7 +29,7 @@ describe("Random Computer", () => {
     let computer = new Computer("X");
     let seed;
 
-    computer.makeRandomMove(board, seed);
+    computer.makeMove(board, seed);
 
     expect(board.marks()).toEqual(["O","X","O","X","O","X","X","O","X"]);
   });
