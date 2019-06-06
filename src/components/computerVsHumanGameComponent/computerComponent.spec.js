@@ -1,5 +1,5 @@
 import React from 'react';
-import ComputerComponent from './computerComponent';
+import ComputerComponent from './computerVsHumanGameComponent';
 import Square from '../squareComponent/squareComponent';
 import Enzyme, { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
