@@ -8,4 +8,7 @@
     pointer-events: none;
     opacity: 0.8;
   }
-  
+
+  .row {
+    margin-right: -55px;
+  }

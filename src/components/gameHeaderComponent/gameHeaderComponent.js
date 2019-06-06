@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './GameHeaderComponent.css';
 import Statuses from './gameHeaderEnum';
-
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 class GameHeader extends Component {
 
@@ -10,11 +10,13 @@ class GameHeader extends Component {
     case Statuses.IN_PROGRESS:
       return `${player}'s Turn!`;
     case Statuses.X_WINS:
-      return 'YAAAAYY X WOOON!';
+      return 'YAAAAYY X WOOON! 🥳 😝 🥰';
     case Statuses.O_WINS:
-      return 'GOOD JOB, O. YOU WON!';
+      return 'GOOD JOB, O. YOU WON! 🤩 🥰 😎';
     case Statuses.DRAW:
-      return 'It was a draw :/. Try again!';
+      return 'It was a draw 😣 . Try again! 😃';
+    case Statuses.COMPUTER_THINKING:
+      return 'Computer\'s Turn';
     default:
       return '';
     }
@@ -22,9 +24,11 @@ class GameHeader extends Component {
 
   render() {
     return (
-      <div>
-        {this.formatStatus(this.props.status, this.props.player)}
-      </div>
+      <Jumbotron>
+        <h1 className="game-Header">
+          {this.formatStatus(this.props.status, this.props.player)}
+        </h1>
+      </ Jumbotron>
     );
   }
 }

@@ -9,8 +9,9 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Pages.Main} />
-          <Route exact path="/game" component= {Pages.Game} />
+          <Route exact path="/game/HumanVsHuman" component= {Pages.Human} />
           <Route exact path="/dummy" component= {Pages.Dummy} />
+          <Route exact path="/game/ComputerVsHuman" component= {Pages.Computer} />
         </Switch>
       </Router>
     );

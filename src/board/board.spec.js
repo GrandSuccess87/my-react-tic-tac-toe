@@ -24,4 +24,29 @@ describe('Marking the board', () => {
 
     expect(board.marks()).toEqual(["","","","","","","","",""]);
   });
+
 });
+
+describe('Available indices of the board', ()  => {
+  it('are 0-8 for empty board', () => {
+    let board = new Board();
+
+    expect(board.availableIndices()).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+
+  it('returns a partially filled board', () => {
+    let board = new Board();
+    board.currentSpots = ["X", "O", "X", "O", "", "", "", "", ""];
+
+    expect(board.availableIndices()).toEqual([4, 5, 6, 7, 8]);
+  })
+
+  it('do not exist for full board', () => {
+    let board = new Board();
+    board.currentSpots = ["X", "O", "X", "O", "X", "O", "X", "O", "X"];
+
+    expect(board.availableIndices()).toEqual([]);
+  })
+
+});
+

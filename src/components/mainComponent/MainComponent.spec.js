@@ -10,9 +10,18 @@ describe('Main Component', () => {
   it('renders a new page after start button is click', () => {
     const wrapper = mount(<Main />);
 
-    wrapper.find('a').simulate('click');
+    wrapper.find('.human-page').simulate('click');
 
-    expect(wrapper.find('[href="./game"]').length).toBe(1);
+    expect(wrapper.find('[href="./game/HumanVsHuman"]').length).toBe(1);
+
+  });
+
+  it('renders a new page for human vs. computer after start button is click', () => {
+    const wrapper = mount(<Main />);
+
+    wrapper.find('.computer-page').simulate('click');
+
+    expect(wrapper.find('[href="./game/ComputerVsHuman"]').length).toBe(1);
 
   });
 });
