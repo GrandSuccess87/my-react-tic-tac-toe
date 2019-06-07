@@ -2,7 +2,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     width: 300px;
-    margin: 15% auto;
+    margin: 10% auto;
 }
 .game-status[disabled] {
     pointer-events: none;
