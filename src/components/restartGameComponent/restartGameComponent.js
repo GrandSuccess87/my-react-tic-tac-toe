@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './restartGameComponent.css';
 
 class RestartGameComponent extends Component {
 
