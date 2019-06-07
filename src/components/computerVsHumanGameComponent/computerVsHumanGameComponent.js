@@ -4,6 +4,7 @@ import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import '../boardComponent/BoardComponent.css';
 import Computer from '../../computer/computer';
 import Board from '../../board/board';
+import RestartGameComponent from '../restartGameComponent/restartGameComponent';
 import PhoenixApi from '../../services/phoenixAPI';
 import statuses from '../gameHeaderComponent/gameHeaderEnum';
 
@@ -22,6 +23,14 @@ class ComputerVsHumanGameComponent extends Component {
     componentDidMount = async () => {
       this.computerMove();
     };
+
+    restartGame = async (event) => {
+      this.setState({
+        board: new Board(),
+        gameStatus: statuses.COMPUTER_THINKING,
+      });
+      setTimeout(() => {this.computerMove();}, 1000);
+    }
 
     toggleMarker = async (event) => {
       const squareIndex = event.target.id;
@@ -66,6 +75,9 @@ class ComputerVsHumanGameComponent extends Component {
             toggleMarker={this.toggleMarker}
             board={this.state.board}
             gameStatus={this.state.gameStatus}
+          />
+          <RestartGameComponent
+            restartGame={this.restartGame}
           />
         </div>
       );

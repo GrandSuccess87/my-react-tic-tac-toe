@@ -1,0 +1,17 @@
+#restart {
+    background-color: lavender;
+    padding: 12px;
+    margin: auto;
+    color: slategray;
+    font-size: 26px;
+    text-align: center;
+    border-radius: 12px;
+    border: .5px solid black;
+    width: 20%;
+    z-index: 1;
+}
+
+#restart:hover {
+    color: darkmagenta;
+    text-decoration: none;
+}
