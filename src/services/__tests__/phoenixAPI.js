@@ -31,9 +31,6 @@ describe("GET Request", () => {
 
 
 describe("GET status of the game", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
 
   it("fetches data for a game in progress", async () => {
     // setup
@@ -54,8 +51,8 @@ describe("GET status of the game", () => {
   it("calls axios with correct url and parameters", async () => {
     //setup
     const spots = ["X", "O", "X",
-      "O", "O", "X",
-      "O", "8", "9"];
+                   "O", "O", "X",
+                   "O", "8", "9"];
 
     // expect
     expect(fakeAxios.get).toHaveBeenCalledWith(
@@ -65,6 +62,44 @@ describe("GET status of the game", () => {
           spots: JSON.stringify(spots).replace(/,/g, ', '),
           current_player: "O",
           next_player: "X"
+        }
+      }
+    );
+  });
+});
+
+describe("GET computer move", () => {
+  it("returns computer's move for a game", async () => {
+    // setup
+    fakeAxios.get.mockImplementation(() =>
+      Promise.resolve({
+        data: { move: "3" }
+      })
+    );
+
+    // work
+    const move = await PhoenixApi.requestComputerMove(["X", "O", "3", "O", "O", "X", "O", "8", "9"], null, "X", "O");
+
+    // expect
+    expect(move).toEqual("3");
+
+  });
+
+  it("calls axios with correct url and parameters", async () => {
+    //setup
+    const spots = ["X", "O", "3",
+                   "O", "O", "X",
+                   "O", "8", "9"];
+
+    // expect
+    expect(fakeAxios.get).toHaveBeenCalledWith(
+      "https://ttt-json-api.herokuapp.com/computer/",
+      {
+        params: {
+          spots: JSON.stringify(spots).replace(/,/g, ', '),
+          seed: null,
+          computer: "X",
+          human: "O"
         }
       }
     );
