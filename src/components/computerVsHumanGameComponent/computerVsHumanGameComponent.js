@@ -46,8 +46,8 @@ class ComputerVsHumanGameComponent extends Component {
       let marks = board.marks();
       let computer = this.state.computer;
       let human = this.state.human;
-      let move = await PhoenixApi.getComputerMove(marks, computer, human)
-      board.makeMark(move, computer)
+      let move = await PhoenixApi.getComputerMove(marks, computer, human);
+      board.makeMark(move, computer);
       this.setState({
         gameStatus: await PhoenixApi.getStatus(marks, human, computer),
       });

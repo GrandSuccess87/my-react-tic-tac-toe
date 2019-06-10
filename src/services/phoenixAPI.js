@@ -47,8 +47,8 @@ const PhoenixAPI = {
   },
 
   moveToBoardIndex: (move) => {
-    let index = parseInt(move) - 1
-    return index
+    let index = parseInt(move) - 1;
+    return index;
   }
 };
 

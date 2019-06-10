@@ -51,8 +51,8 @@ describe("GET status of the game", () => {
   it("calls axios with correct url and parameters", async () => {
     //setup
     const spots = ["X", "O", "X",
-                   "O", "O", "X",
-                   "O", "8", "9"];
+      "O", "O", "X",
+      "O", "8", "9"];
 
     // expect
     expect(fakeAxios.get).toHaveBeenCalledWith(
@@ -88,8 +88,8 @@ describe("GET computer move", () => {
   it("calls axios with correct url and parameters", async () => {
     //setup
     const spots = ["X", "O", "3",
-                   "O", "O", "X",
-                   "O", "8", "9"];
+      "O", "O", "X",
+      "O", "8", "9"];
 
     // expect
     expect(fakeAxios.get).toHaveBeenCalledWith(
