@@ -12,7 +12,6 @@ describe('Main Component', () => {
     const wrapper = mount(<Main />);
 
     wrapper.find(ButtonComponent).at(0).simulate('click');
-    // wrapper.update();
 
     expect(wrapper.find('[href="./game/HumanVsHuman"]').length).toBe(1);
 
@@ -22,7 +21,6 @@ describe('Main Component', () => {
     const wrapper = mount(<Main />);
 
     wrapper.find(ButtonComponent).at(1).simulate('click');
-    // wrapper.update();
 
     expect(wrapper.find('[href="./game/ComputerVsHuman"]').length).toBe(1);
 
