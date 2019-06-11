@@ -4,7 +4,7 @@ import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import '../boardComponent/BoardComponent.css';
 import Board from '../../board/board';
 import PhoenixApi from '../../services/phoenixAPI';
-import RestartGameComponent from '../restartGameComponent/restartGameComponent';
+import ButtonComponent from '../buttonComponent/buttonComponent';
 import Statuses from '../gameHeaderComponent/gameHeaderEnum';
 
 class HumanVsHumanGameComponent extends Component {
@@ -15,14 +15,6 @@ class HumanVsHumanGameComponent extends Component {
       value: 'X',
       gameStatus: Statuses.IN_PROGRESS,
     };
-  }
-
-  restartGame = async (event) => {
-    this.setState({
-      board: new Board(),
-      gameStatus: Statuses.IN_PROGRESS,
-      value: 'X'
-    });
   }
 
 toggleMarker = async (event) => {
@@ -52,8 +44,11 @@ render() {
         board={this.state.board}
         gameStatus={this.state.gameStatus}
       />
-      <RestartGameComponent
-        restartGame={this.restartGame}
+      <ButtonComponent
+        divClassName="restart_game"
+        id="restart"
+        buttonName="Restart Game"
+        url="./HumanVsHuman"
       />
     </div>
   );
