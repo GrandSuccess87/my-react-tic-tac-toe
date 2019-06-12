@@ -78,7 +78,7 @@ describe("GET computer move", () => {
     );
 
     // work
-    const move = await PhoenixApi.requestComputerMove(["X", "O", "3", "O", "O", "X", "O", "8", "9"], null, "X", "O");
+    const move = await PhoenixApi.requestComputerMove(["X", "O", "3", "O", "O", "X", "O", "8", "9"], "X", "O");
 
     // expect
     expect(move).toEqual("3");
@@ -97,7 +97,6 @@ describe("GET computer move", () => {
       {
         params: {
           spots: JSON.stringify(spots).replace(/,/g, ', '),
-          seed: null,
           computer: "X",
           human: "O"
         }

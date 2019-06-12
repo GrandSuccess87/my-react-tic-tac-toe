@@ -14,14 +14,14 @@ class Main extends Component {
           <h2>Welcome to React Tic Tac Toe</h2>
           <br/>
           <ButtonComponent
-            divClassName="start_game"
+            divClassName="start-game"
             linkClassName="human-page"
             id="start"
             url='./game/HumanVsHuman'
             buttonName="Human vs. Human"
           />
           <ButtonComponent
-            divClassName="start_game"
+            divClassName="start-game"
             linkClassName="computer-page"
             id="start"
             url='./game/ComputerVsHuman'

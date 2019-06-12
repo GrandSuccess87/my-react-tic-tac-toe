@@ -8,10 +8,6 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Board Component', () => {
-  it('renders the Board Component without crashing', () => {
-    const wrapper = mount(<BoardComponent board={new Board()}/>);
-  });
-
   it('renders 9 Square components', () => {
     const wrapper = mount(<BoardComponent board={new Board()}/>);
   
