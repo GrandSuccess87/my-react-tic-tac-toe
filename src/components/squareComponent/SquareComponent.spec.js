@@ -12,6 +12,7 @@ describe('Square Component', () => {
     const wrapper = mount(<GameSquare toggleMarker={toggleMarker} />);
 
     wrapper.simulate('click');
+    wrapper.update();
 
     expect(toggleMarker).toHaveBeenCalled();
   });

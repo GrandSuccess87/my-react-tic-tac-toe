@@ -1,6 +1,7 @@
 import Enzyme from "enzyme";
 import React from 'react';
 import Main from './mainComponent';
+import ButtonComponent from '../buttonComponent/buttonComponent';
 import {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -11,6 +12,7 @@ describe('Main Component', () => {
     const wrapper = mount(<Main />);
 
     wrapper.find('.human-page').simulate('click');
+    wrapper.update();
 
     expect(wrapper.find('[href="./game/HumanVsHuman"]').length).toBe(1);
 
@@ -20,6 +22,7 @@ describe('Main Component', () => {
     const wrapper = mount(<Main />);
 
     wrapper.find('.computer-page').simulate('click');
+    wrapper.update();
 
     expect(wrapper.find('[href="./game/ComputerVsHuman"]').length).toBe(1);
 

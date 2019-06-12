@@ -4,6 +4,7 @@ import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import '../boardComponent/BoardComponent.css';
 import Computer from '../../computer/computer';
 import Board from '../../board/board';
+import ButtonComponent from '../buttonComponent/buttonComponent';
 import PhoenixApi from '../../services/phoenixAPI';
 import statuses from '../gameHeaderComponent/gameHeaderEnum';
 
@@ -66,6 +67,12 @@ class ComputerVsHumanGameComponent extends Component {
             toggleMarker={this.toggleMarker}
             board={this.state.board}
             gameStatus={this.state.gameStatus}
+          />
+          <ButtonComponent
+            divClassName="restart_game"
+            id="restart"
+            buttonName="Restart Game"
+            url="./ComputerVsHuman"
           />
         </div>
       );
