@@ -6,7 +6,9 @@ import Adapter from 'enzyme-adapter-react-16';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Button Component', () => {
-  it('renders the button component without crashing', () => {
-    const wrapper = mount(<ButtonComponent />);
-  });
+  it('has a hyperlink reference to the correct url', () => {
+    const wrapper = mount(<ButtonComponent url='.game/computerVsHuman'/>);
+
+    expect(wrapper.find('[href=".game/computerVsHuman"]').length).toBe(1);
+  })
 });
