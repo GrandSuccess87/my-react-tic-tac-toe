@@ -1,9 +1,6 @@
 import React from 'react';
 import ButtonComponent from './buttonComponent';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-Enzyme.configure({ adapter: new Adapter() });
+import { mount } from 'enzyme';
 
 describe('Button Component', () => {
   it('has a hyperlink reference to the correct url', () => {

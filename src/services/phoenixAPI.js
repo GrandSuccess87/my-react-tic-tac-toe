@@ -4,7 +4,7 @@ const PhoenixAPI = {
   request: async () => {
     const response = await axios.get("https://ttt-json-api.herokuapp.com/"
     );
-    return response.data.spots;
+    return response.data;
   },
 
   requestStatus: async (spots, next_player, current_player) => {
@@ -14,12 +14,13 @@ const PhoenixAPI = {
         next_player: next_player,
         current_player: current_player}
     });
-    return response.data.status;
+    return response.data;
   },
 
   getStatus: async (marks, next_player, current_player) => {
     let newMarks = PhoenixAPI.addIndices(marks);
-    return await PhoenixAPI.requestStatus(newMarks, next_player, current_player);
+    let data = await PhoenixAPI.requestStatus(newMarks, next_player, current_player);
+    return data.status;
   },
 
   requestComputerMove: async (spots, computer, human) => {
@@ -29,12 +30,13 @@ const PhoenixAPI = {
         computer: computer,
         human: human}
     });
-    return response.data.move;
+    return response.data;
   },
 
   getComputerMove: async (marks, computer, human) => {
     let newMarks = PhoenixAPI.addIndices(marks);
-    let move = await PhoenixAPI.requestComputerMove(newMarks, computer, human);
+    let data = await PhoenixAPI.requestComputerMove(newMarks, computer, human);
+    let move = data.move;
     return PhoenixAPI.moveToBoardIndex(move);
   },
 
