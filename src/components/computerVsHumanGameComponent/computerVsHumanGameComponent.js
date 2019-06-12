@@ -12,14 +12,13 @@ class ComputerVsHumanGameComponent extends Component {
     super(props);
     this.state = {
       board: new Board(),
+      computer: this.props.computerPlayer,
       human: 'O',
       gameStatus: statuses.IN_PROGRESS,
     };
   }
 
-    computer = this.props.computerPlayer;
-
-    componentDidMount = async () => {
+    componentDidMount() {
       this.computerMove();
     };
 
@@ -28,7 +27,7 @@ class ComputerVsHumanGameComponent extends Component {
       let board = this.state.board;
       board.makeMark(squareIndex,this.state.human);
 
-      let next_player = this.computer.symbol;
+      let next_player = this.state.computer.symbol;
       let current_player = this.state.human;
       let marks = this.state.board.marks();
       this.setState({
@@ -46,9 +45,9 @@ class ComputerVsHumanGameComponent extends Component {
     computerMove = async () => {
       let board = this.state.board;
       let human = this.state.human;
-      await this.computer.makeMoveFromEndpoint(board, human);
+      await this.state.computer.makeMove(board, human);
       this.setState({
-        gameStatus: await PhoenixApi.getStatus(board.marks(), human, this.computer.symbol),
+        gameStatus: await PhoenixApi.getStatus(board.marks(), human, this.state.computer.symbol),
       });
     }
 
