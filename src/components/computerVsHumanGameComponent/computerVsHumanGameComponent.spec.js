@@ -18,8 +18,10 @@ describe('Computer making a move', () => {
       expect(square.text()).toBe('X');
     });
   });
+});
 
-  it('places an O for first move from human player', () => {
+describe('Human making a move', () => {
+  it('places an O for first move', () => {
     const computerPlayer = new FakeComputer('X');
     const wrapper = mount(<ComputerComponent computerPlayer={computerPlayer} />);
 
