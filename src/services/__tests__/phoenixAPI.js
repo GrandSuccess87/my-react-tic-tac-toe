@@ -70,3 +70,39 @@ describe("GET status of the game", () => {
     );
   });
 });
+
+describe("GET winning indices of the game", () => {
+
+  it("fetches any winning indices for a board", async () => {
+    // setup
+    fakeAxios.get.mockImplementation(() =>
+      Promise.resolve({
+        data: { index_list: ["1", "2", "3"] }
+      })
+    );
+
+    // work
+    const data = await PhoenixApi.requestWinningIndices(["X", "X", "X", "O", "O", "6", "7", "8", "9"]);
+
+    // expect
+    expect(data.index_list).toEqual(["1", "2", "3"]);
+
+  });
+
+  it("calls axios with correct url and parameters", async () => {
+    //setup
+    const spots = ["X", "X", "X",
+                   "O", "O", "6", 
+                   "7", "8", "9"];
+
+    // expect
+    expect(fakeAxios.get).toHaveBeenCalledWith(
+      "https://ttt-json-api.herokuapp.com/winner/",
+      {
+        params: {
+          spots: JSON.stringify(spots).replace(/,/g, ', '),
+        }
+      }
+    );
+  });
+});

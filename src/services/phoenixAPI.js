@@ -27,6 +27,20 @@ const PhoenixAPI = {
       return mark === '' ? index + 1 : mark;
     });
     return newMarks;
+  },
+
+  requestWinningIndices: async (spots) => {
+    const response = await axios.get("https://ttt-json-api.herokuapp.com/winner/", {
+      params: {
+        spots: JSON.stringify(spots).replace(/,/g, ', ')
+      }
+    });
+    return response.data;
+  },
+
+  getWinningIndices: async (marks) => {
+    let newMarks = PhoenixAPI.addIndices(marks);
+    return await PhoenixAPI.requestWinningIndices(newMarks);
   }
 };
 
