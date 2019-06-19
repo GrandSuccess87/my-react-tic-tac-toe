@@ -1,10 +1,7 @@
 import React from 'react';
 import HumanComponent from './humanVsHumanGameComponent';
 import Square from '../squareComponent/squareComponent';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-Enzyme.configure({ adapter: new Adapter() });
+import { mount } from 'enzyme';
 
 describe('Making a move', () => {
   it('places an X for the first move', () => {
