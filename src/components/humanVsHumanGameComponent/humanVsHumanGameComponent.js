@@ -32,14 +32,12 @@ toggleMarker = async (event) => {
   });
 
   if (this.state.gameStatus !== Statuses.IN_PROGRESS) {
-    this.highlightWinners(marks);
+    let data = await PhoenixApi.getWinningIndices(marks);
+    this.highlightWinners(data.index_list);
   }
 }
 
-highlightWinners = async (marks) => {
-  let data = await PhoenixApi.getWinningIndices(marks);
-  let winningCells = data.index_list;
-  console.log(winningCells);
+highlightWinners = async (winningCells) => {
   winningCells.forEach((index) => {
     let indexString = parseInt(index);
     document.getElementById(indexString).classList.add('highlight');
