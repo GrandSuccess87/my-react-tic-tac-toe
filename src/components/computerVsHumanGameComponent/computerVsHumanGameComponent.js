@@ -4,7 +4,6 @@ import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import '../boardComponent/BoardComponent.css';
 import Board from '../../board/board';
 import ButtonComponent from '../buttonComponent/buttonComponent';
-import PhoenixApi from '../../services/phoenixAPI';
 import Statuses from '../gameHeaderComponent/gameHeaderEnum';
 
 class ComputerVsHumanGameComponent extends Component {
@@ -15,6 +14,7 @@ class ComputerVsHumanGameComponent extends Component {
       computer: this.props.computerPlayer,
       human: 'O',
       gameStatus: Statuses.IN_PROGRESS,
+      api: this.props.api
     };
   }
 
@@ -31,43 +31,40 @@ class ComputerVsHumanGameComponent extends Component {
       let current_player = this.state.human;
       let marks = this.state.board.marks();
 
-      this.updateGameStatus(marks, next_player, current_player);
-      this.checkForWinner();
+      await this.updateGameStatus(marks, next_player, current_player);
+      this.checkForWinner(marks);
       this.checkForComputerTurn();
     }
 
     computerMove = async () => {
       let board = this.state.board;
-      this.computer.makeMove(board);
+      let human = this.state.human;
+      await this.state.computer.makeMove(board, human);
 
-      let current_player = this.computer.symbol;
-      let next_player = this.state.human;
-      let marks = this.state.board.marks();
-
-      this.updateGameStatus(marks, next_player, current_player);
-      this.checkForWinner();
+      await this.updateGameStatus(board.marks(), human, this.state.computer.symbol);
+      this.checkForWinner(board.marks());
     }
 
     updateGameStatus = async (marks, next_player, current_player) => {
       this.setState({
-        gameStatus: await PhoenixApi.getStatus(marks, next_player, current_player)
+        gameStatus: await this.state.api.getStatus(marks, next_player, current_player)
       });
     }
 
     checkForComputerTurn = () => {
-      if(this.state.gameStatus === Statuses.IN_PROGRESS && next_player === this.computer.symbol){
+      if(this.state.gameStatus === Statuses.IN_PROGRESS){
         this.setState({
           gameStatus: Statuses.COMPUTER_THINKING
         });
-        setTimeout( () => {this.computerMove();}, 1000);
+        setTimeout(() => {this.computerMove()}, 1000);
       }
     }
 
-    checkForWinner = async () => {
-      if (this.state.gameStatus !== Statuses.IN_PROGRESS || this.state.gameStatus !== Statuses.COMPUTER_THINKING) {
-        let data = await PhoenixApi.getWinningIndices(marks);
-        this.highlightWinners(data.index_list);
-      }
+    checkForWinner = async (marks) => {
+      if(!(this.state.gameStatus === Statuses.IN_PROGRESS) && !(this.state.gameStatus === Statuses.COMPUTER_THINKING)){
+            let data = await this.state.api.getWinningIndices(marks);
+            this.highlightWinners(data.index_list);
+        }
     }
 
     highlightWinners = async (winningCells) => {
