@@ -4,8 +4,7 @@ import GameHeader from '../gameHeaderComponent/gameHeaderComponent';
 import '../boardComponent/BoardComponent.css';
 import Board from '../../board/board';
 import ButtonComponent from '../buttonComponent/buttonComponent';
-import PhoenixApi from '../../services/phoenixAPI';
-import statuses from '../gameHeaderComponent/gameHeaderEnum';
+import Statuses from '../gameHeaderComponent/gameHeaderEnum';
 
 class ComputerVsHumanGameComponent extends Component {
   constructor(props) {
@@ -14,7 +13,8 @@ class ComputerVsHumanGameComponent extends Component {
       board: new Board(),
       computer: this.props.computerPlayer,
       human: 'O',
-      gameStatus: statuses.IN_PROGRESS,
+      gameStatus: Statuses.IN_PROGRESS,
+      api: this.props.api
     };
   }
 
@@ -30,25 +30,48 @@ class ComputerVsHumanGameComponent extends Component {
       let next_player = this.state.computer.symbol;
       let current_player = this.state.human;
       let marks = this.state.board.marks();
-      this.setState({
-        gameStatus: await PhoenixApi.getStatus(marks, next_player, current_player),
-      });
 
-      if(this.state.gameStatus === statuses.IN_PROGRESS){
-        this.setState({
-          gameStatus: statuses.COMPUTER_THINKING
-        });
-        setTimeout( () => {this.computerMove();}, 1000);
-      }
+      await this.updateGameStatus(marks, next_player, current_player);
+      this.checkForWinner(marks);
+      this.checkForComputerTurn();
     }
 
     computerMove = async () => {
       let board = this.state.board;
       let human = this.state.human;
       await this.state.computer.makeMove(board, human);
+
+      await this.updateGameStatus(board.marks(), human, this.state.computer.symbol);
+      this.checkForWinner(board.marks());
+    }
+
+    updateGameStatus = async (marks, next_player, current_player) => {
       this.setState({
-        gameStatus: await PhoenixApi.getStatus(board.marks(), human, this.state.computer.symbol),
+        gameStatus: await this.state.api.getStatus(marks, next_player, current_player)
       });
+    }
+
+    checkForComputerTurn = () => {
+      if(this.state.gameStatus === Statuses.IN_PROGRESS){
+        this.setState({
+          gameStatus: Statuses.COMPUTER_THINKING
+        });
+        setTimeout(() => {this.computerMove()}, 1000);
+      }
+    }
+
+    checkForWinner = async (marks) => {
+      if(!(this.state.gameStatus === Statuses.IN_PROGRESS) && !(this.state.gameStatus === Statuses.COMPUTER_THINKING)){
+            let data = await this.state.api.getWinningIndices(marks);
+            this.highlightWinners(data.index_list);
+        }
+    }
+
+    highlightWinners = async (winningCells) => {
+      winningCells.forEach((index) => {
+        let indexString = parseInt(index);
+      document.getElementById(indexString).classList.add('highlight');
+      })
     }
 
     render() {

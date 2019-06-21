@@ -70,13 +70,12 @@ describe("GET computer move", () => {
     const data = await PhoenixApi.requestComputerMove(["X", "O", "3", "O", "O", "X", "O", "8", "9"], "X", "O");
 
     expect(data.move).toEqual("3");
-
   });
 
   it("calls axios with correct url and parameters", async () => {
     const spots = ["X", "O", "3",
-      "O", "O", "X",
-      "O", "8", "9"];
+                   "O", "O", "X",
+                   "O", "8", "9"];
 
     expect(fakeAxios.get).toHaveBeenCalledWith(
       "https://ttt-json-api.herokuapp.com/computer/",
@@ -85,6 +84,37 @@ describe("GET computer move", () => {
           spots: JSON.stringify(spots).replace(/,/g, ', '),
           computer: "X",
           human: "O"
+        }
+      }
+    );
+  });
+});
+
+describe("GET winning indices of the game", () => {
+
+  it("fetches any winning indices for a board", async () => {
+    const winningIndices = ["1", "2", "3"];
+    fakeAxios.get.mockImplementation(() =>
+      Promise.resolve({
+        data: { index_list: winningIndices }
+      })
+    );
+
+    const data = await PhoenixApi.requestWinningIndices(["X", "X", "X", "O", "O", "6", "7", "8", "9"]);
+
+    expect(data.index_list).toEqual(winningIndices);
+  });
+
+  it("calls axios with correct url and parameters", async () => {
+    const spots = ["X", "X", "X",
+                   "O", "O", "6", 
+                   "7", "8", "9"];
+
+    expect(fakeAxios.get).toHaveBeenCalledWith(
+      "https://ttt-json-api.herokuapp.com/winner/",
+      {
+        params: {
+          spots: JSON.stringify(spots).replace(/,/g, ', '),
         }
       }
     );
